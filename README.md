@@ -5,8 +5,23 @@ A public progress report on running the Windows version of
 
 ![Alibre Design's 3D viewport showing a spur gear, rendered on Linux through Wine](assets/gear-viewport.jpg)
 
-**Read the report:** open `index.html`, or the GitHub Pages site once it is turned on
-(see below).
+**Read the report:** the GitHub Pages site once it is turned on (see below), or serve
+the folder locally with `python -m http.server` and open <http://localhost:8000>.
+Opening `index.html` straight from disk works too, but the embedded YouTube player
+then shows "Error 153", because YouTube refuses to play inside a page with no web address.
+
+## Recorded sessions
+
+Development and testing recordings: the [Alibre on Linux playlist](https://www.youtube.com/playlist?list=PLWC4Xgzw8aMs) on YouTube.
+
+| Setup | Session |
+|---|---|
+| WSL, Ubuntu 24 on Windows 11 | [Part modeling](https://www.youtube.com/watch?v=Pz1MZffQkME) |
+| WSL, Ubuntu 24 on Windows 11 | [Sheet metal](https://www.youtube.com/watch?v=QfC7qfxbwQw) |
+| WSL, Ubuntu 24 on Windows 11 | [Assembly](https://www.youtube.com/watch?v=PfRrPUX1fnQ) |
+| Ubuntu 24.04.5 LTS VM | [First run in the VM](https://www.youtube.com/watch?v=17NofpYCi0Q) |
+| Ubuntu 24.04.5 LTS VM | [VM session 2](https://www.youtube.com/watch?v=C6yHX2yflec) |
+| Ubuntu 24.04.5 LTS VM | [Space frame assembly performance test](https://www.youtube.com/watch?v=Bqs4fVs5dUc) |
 
 ## Status at a glance
 
@@ -39,6 +54,9 @@ The whole report is one file, `index.html`, with no build step.
    and the "Last updated" line in this README.
 4. **Milestones, Working today, Next.** Plain lists; edit the text.
 5. **Images.** Put them in `assets/` and reference them with a relative path.
+   **Videos.** New uploads to the playlist show up in the embedded player on their own.
+   To add a card, copy one `<a class="vid">` block in the "Recorded sessions" section
+   and change the video ID in its link and thumbnail. Add a row to the table above too.
 6. Add a line to `CHANGELOG.md`, then commit and push. GitHub Pages redeploys
    on its own within a minute or two.
 

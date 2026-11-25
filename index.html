@@ -91,6 +91,17 @@ ul.list{margin:0;padding-left:1.15rem;display:grid;gap:.4rem}
 footer{padding-top:1.4rem;border-top:2px solid var(--ink);font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;gap:.4rem}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
+a{color:var(--accent)}
+.player{position:relative;aspect-ratio:16/9;max-width:100%;border:1px solid var(--rule);background:var(--track)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vgroup{display:flex;flex-direction:column;gap:.6rem}
+.videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:640px){.videos{grid-template-columns:1fr}}
+.vid{display:flex;flex-direction:column;gap:.45rem;color:var(--ink);text-decoration:none;min-width:0}
+.vid img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--rule);background:var(--track)}
+.vt{font-weight:600;font-size:.95rem;line-height:1.35}
+.vid:hover .vt{color:var(--accent);text-decoration:underline}
+.vid:hover img{border-color:var(--accent)}
 /* Progress values come from style="--pct:N" on each .g and on .ring; the bar width and the number are drawn from it. */
 .g .pct::before{counter-reset:p var(--pct);content:counter(p) "%"}
 .g .bar span{width:calc(var(--pct) * 1%)}
@@ -186,6 +197,32 @@ footer{padding-top:1.4rem;border-top:2px solid var(--ink);font-size:.82rem;color
         <div><h3>Hidden app</h3><p>The full program runs with no visible window, for scripted work that needs the real interface or add-ons.</p></div>
         <div><h3>Background service</h3><p>Keeps the CAD engine loaded so file inspection and conversion jobs return in about a second instead of half a minute.</p></div>
       </div>
+    </section>
+
+    <section id="sessions">
+      <h2>Recorded sessions</h2>
+      <p>Screen recordings from development and testing: Alibre Design running on Linux through Wine, in a Linux environment on Windows 11 and in an Ubuntu 24.04.5 virtual machine.</p>
+      <div class="player">
+        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLWC4Xgzw8aMs" title="Alibre on Linux playlist" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <!-- Video list: copy a card to add one. Thumbnail: https://i.ytimg.com/vi/VIDEO_ID/mqdefault.jpg -->
+      <div class="vgroup">
+        <h3>Linux on Windows 11 (WSL, Ubuntu 24)</h3>
+        <div class="videos">
+          <a class="vid" href="https://www.youtube.com/watch?v=Pz1MZffQkME&amp;list=PLWC4Xgzw8aMs"><img src="https://i.ytimg.com/vi/Pz1MZffQkME/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="vt">Part modeling</span></a>
+          <a class="vid" href="https://www.youtube.com/watch?v=QfC7qfxbwQw&amp;list=PLWC4Xgzw8aMs"><img src="https://i.ytimg.com/vi/QfC7qfxbwQw/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="vt">Sheet metal</span></a>
+          <a class="vid" href="https://www.youtube.com/watch?v=PfRrPUX1fnQ&amp;list=PLWC4Xgzw8aMs"><img src="https://i.ytimg.com/vi/PfRrPUX1fnQ/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="vt">Assembly</span></a>
+        </div>
+      </div>
+      <div class="vgroup">
+        <h3>Ubuntu 24.04.5 LTS virtual machine</h3>
+        <div class="videos">
+          <a class="vid" href="https://www.youtube.com/watch?v=17NofpYCi0Q&amp;list=PLWC4Xgzw8aMs"><img src="https://i.ytimg.com/vi/17NofpYCi0Q/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="vt">First run in the VM</span></a>
+          <a class="vid" href="https://www.youtube.com/watch?v=C6yHX2yflec&amp;list=PLWC4Xgzw8aMs"><img src="https://i.ytimg.com/vi/C6yHX2yflec/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="vt">VM session 2</span></a>
+          <a class="vid" href="https://www.youtube.com/watch?v=Bqs4fVs5dUc&amp;list=PLWC4Xgzw8aMs"><img src="https://i.ytimg.com/vi/Bqs4fVs5dUc/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span class="vt">Space frame assembly performance test</span></a>
+        </div>
+      </div>
+      <p class="note">Full playlist: <a href="https://www.youtube.com/playlist?list=PLWC4Xgzw8aMs">Alibre on Linux on YouTube</a>. Videos open on YouTube.</p>
     </section>
 
     <section>
