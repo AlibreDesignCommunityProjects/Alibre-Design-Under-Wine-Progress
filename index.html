@@ -8,6 +8,11 @@
 <meta property="og:title" content="Alibre Design on Linux Progress">
 <meta property="og:description" content="Running Alibre Design for Windows on Linux through Wine: what works, what's next.">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://alibredesigncommunityprojects.github.io/Alibre-Design-Under-Wine-Progress/">
+<meta property="og:image" content="https://alibredesigncommunityprojects.github.io/Alibre-Design-Under-Wine-Progress/assets/gear-viewport.jpg">
+<meta property="og:image:alt" content="A spur gear in Alibre Design's 3D viewport, rendered on Linux through Wine.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://alibredesigncommunityprojects.github.io/Alibre-Design-Under-Wine-Progress/">
 <meta name="color-scheme" content="light dark">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,6 +115,13 @@ a{color:var(--accent)}
 .ring .val{stroke-dasharray:100 100;stroke-dashoffset:calc(100 - var(--pct))}
 .ringpct{position:absolute;font-family:var(--f-head);font-weight:700;font-size:1.75rem}
 .ringpct::before{counter-reset:p var(--pct);content:counter(p) "%"}
+.attrib{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.attrib img{display:block;height:30px;width:auto;border:0}
+.attrib .b-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .attrib .b-light{display:none}:root:not([data-theme="light"]) .attrib .b-dark{display:block}}
+:root[data-theme="dark"] .attrib .b-light{display:none}
+:root[data-theme="dark"] .attrib .b-dark{display:block}
+:root[data-theme="light"] .attrib .b-dark{display:none}
 </style>
 </head>
 <body>
@@ -174,7 +186,7 @@ a{color:var(--accent)}
 
     <section>
       <h2>How it fits together</h2>
-      <p>Alibre Design stays unmodified. Wine translates its Windows calls to Linux, including the 3D graphics, which pass through standard open-source drivers to the GPU. A few compatibility fixes in Wine made this work, and we plan to offer them back to the Wine project.</p>
+      <p>Alibre Design stays unmodified. Wine translates its Windows calls to Linux, including the 3D graphics, which pass through standard open-source drivers to the GPU. A few compatibility fixes in Wine made this work.</p>
       <div class="diagram">
         <svg viewBox="0 0 900 250" role="img" aria-label="Layer diagram: Alibre Design, unmodified, runs on Wine with project fixes, which runs on Linux, which uses the GPU through open-source graphics drivers. Three ways to run it: desktop app, hidden app, background service.">
           <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrow"/></marker></defs>
@@ -256,7 +268,6 @@ a{color:var(--accent)}
             <li>Test drawings, printing and PDF output</li>
             <li>Test add-on commands end to end</li>
             <li>Try a standard Linux PC with no Windows underneath</li>
-            <li>Offer the compatibility fixes to the Wine project</li>
             <li>Build a one-step installer for the Linux side</li>
           </ul>
         </div>
@@ -264,8 +275,14 @@ a{color:var(--accent)}
     </section>
 
     <footer>
+      <div class="attrib">
+        <img class="b-light" src="assets/ai-made-human-reviewed--light.svg" alt="Made by AI / LLM – Human Reviewed" width="303" height="30">
+        <img class="b-dark" src="assets/ai-made-human-reviewed--dark.svg" alt="" width="303" height="30">
+        <span>Made with AI/LLM tools; directed, reviewed and corrected by the maintainer.</span>
+      </div>
       <span>An independent community project. Not affiliated with, endorsed by, or supported by Alibre, LLC or the WineHQ project. Alibre Design is a trademark of its owner. Each user needs their own Alibre Design license and installs it from the official installer.</span>
       <span>This is a summary for a general audience. Technical details are kept in a separate private report.</span>
+      <span>Source and update history: <a href="https://github.com/AlibreDesignCommunityProjects/Alibre-Design-Under-Wine-Progress">github.com/AlibreDesignCommunityProjects/Alibre-Design-Under-Wine-Progress</a></span>
     </footer>
   </div>
 </div>

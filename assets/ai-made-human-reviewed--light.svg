@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="303" height="30" viewBox="0 0 303 30" role="img" aria-label="MADE BY AI / LLM HUMAN REVIEWED">
+  <clipPath id="c"><rect width="303" height="30" rx="6"></rect></clipPath>
+  <g clip-path="url(#c)">
+    <rect width="168" height="30" fill="#2E2A25"></rect>
+    <rect x="168" width="135" height="30" fill="#2F8A5B"></rect>
+  </g>
+  <circle cx="17.5" cy="15" r="4.5" fill="#56B183"></circle>
+  <text x="30" y="15" dominant-baseline="central" fill="#F7F5F1" font-family="IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" letter-spacing="0.6">MADE BY AI / LLM</text>
+  <text x="181" y="15" dominant-baseline="central" fill="#FFFFFF" font-family="IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" letter-spacing="0.6">HUMAN REVIEWED</text>
+  
+</svg>
