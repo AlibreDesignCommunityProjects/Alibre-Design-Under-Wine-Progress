@@ -129,14 +129,14 @@ a{color:var(--accent)}
   <div class="tb" role="group" aria-label="Report title block">
     <div><span class="label">Title</span><span class="v" style="font-family:var(--f-head);font-weight:700;font-size:1.05rem">Alibre Design on Linux</span></div>
     <div><span class="label">Report</span><span class="v">Progress</span></div>
-    <div><span class="label">Date</span><span class="v">Nov 25, 2026</span></div>
+    <div><span class="label">Date</span><span class="v">Nov 27, 2026</span></div>
     <div><span class="label">Status</span><span class="v" style="color:var(--ok);font-weight:600">On track</span></div>
   </div>
   <div class="inner">
     <header class="top">
       <span class="label">Independent compatibility project · Wine on Linux</span>
       <h1>Alibre Design on Linux: Progress</h1>
-      <p class="lede">We are running the Windows version of Alibre Design on Linux through Wine, the open-source Windows compatibility layer. The desktop app now installs, activates, opens and edits parts, and renders 3D models on the GPU. It also runs unattended as a background service that converts and inspects CAD files on request.</p>
+      <p class="lede">We are running the Windows version of Alibre Design on Linux through Wine, the open-source Windows compatibility layer. The desktop app now installs, activates, opens and edits parts, and renders 3D models on the GPU. It also runs unattended as a background service that converts and inspects CAD files on request. It also runs on Apple Silicon Macs in an Arm Linux virtual machine. Directly on macOS, scripted work runs but you can't use the desktop window yet.</p>
     </header>
 
     <section>
@@ -163,6 +163,8 @@ a{color:var(--accent)}
             <span class="pill ok">Desktop app working</span>
             <span class="pill ok">Background service working</span>
             <span class="pill warn">Some features untested</span>
+            <span class="pill ok">Apple Silicon Linux VM working</span>
+            <span class="pill warn">macOS desktop app not usable yet</span>
             <span class="pill info">Packaging planned</span>
           </div>
         </div>
@@ -205,10 +207,34 @@ a{color:var(--accent)}
         </svg>
       </div>
       <div class="modes">
-        <div><h3>Desktop app</h3><p>Model as usual. Tested on a Linux desktop inside Windows and in a virtual machine.</p></div>
+        <div><h3>Desktop app</h3><p>Model as usual. Tested on a Linux desktop inside Windows, in a virtual machine, and in an Arm Linux virtual machine on an Apple Silicon Mac.</p></div>
         <div><h3>Hidden app</h3><p>The full program runs with no visible window, for scripted work that needs the real interface or add-ons.</p></div>
         <div><h3>Background service</h3><p>Keeps the CAD engine loaded so file inspection and conversion jobs return in about a second instead of half a minute.</p></div>
       </div>
+    </section>
+
+    <section id="macos">
+      <h2>Apple Silicon Macs</h2>
+      <p>We tried two ways to run Alibre Design on an Apple Silicon Mac (M4, macOS 27). Both use Apple's Rosetta to translate Alibre's Intel code.</p>
+      <div class="cols">
+        <div>
+          <h3>Linux in a virtual machine <span class="pill ok">Working</span></h3>
+          <p>We ran Ubuntu 26.04 Arm in Parallels Desktop with Rosetta for Linux. The desktop app and its 3D view work, and our automated test kit passed with no failures.</p>
+          <p class="note">Rosetta for Linux can't run 32-bit programs, and parts of the Windows installers are 32-bit. We built a 64-bit-only install route around that, and a full build takes about 25 minutes.</p>
+        </div>
+        <div>
+          <h3>Directly on macOS, no VM <span class="pill warn">Partly working</span></h3>
+          <p>We used McSoda 11.0, the macOS Wine build from the Bottles project, run on its own without the Bottles app, with Apple's D3DMetal for 3D graphics. Alibre installs and activates, and command-line automation gives the same results as on Linux. The desktop window opens with a blank 3D view; the interface lags and some dialogs hang.</p>
+          <p class="note">Alibre creates its 3D view at a tiny size and then enlarges it, and the macOS graphics layer never passes the new size on. Our experimental fix makes the model appear, but then Alibre ignores the mouse and keyboard. We've put the macOS desktop work on hold.</p>
+        </div>
+      </div>
+      <div class="gauges">
+        <div class="g done" style="--pct:100"><span class="name">macOS: installation and license activation</span><span class="pct"></span><div class="bar"><span></span></div><span class="note">Alibre's normal installers work, because macOS's Rosetta runs their 32-bit parts.</span></div>
+        <div class="g done" style="--pct:95"><span class="name">macOS: automation and file conversion</span><span class="pct"></span><div class="bar"><span></span></div><span class="note">You can inspect parts, change dimensions, run scripts and export to seven neutral formats, with the same results as on Linux. With the background service running, each job takes 0.3 to 2.3 seconds.</span></div>
+        <div class="g" style="--pct:75"><span class="name">macOS: Python scripting</span><span class="pct"></span><div class="bar"><span></span></div><span class="note">43 of 49 demos and 72 example scripts pass. We traced the failures to library bugs, unfinished examples and a missing PDM server.</span></div>
+        <div class="g" style="--pct:15"><span class="name">macOS: desktop app and 3D view</span><span class="pct"></span><div class="bar"><span></span></div><span class="note">The window and ribbon appear and parts open, but you can't model with a blank 3D view.</span></div>
+      </div>
+      <p class="note">To model on a Mac today, use the Linux virtual machine.</p>
     </section>
 
     <section id="sessions">
@@ -243,7 +269,9 @@ a{color:var(--accent)}
         <li><span class="d">Mid-October 2026</span>Installed and activated; the interface and 3D view came up. First parts opened with full solid geometry after a compatibility fix.</li>
         <li><span class="d">Late October 2026</span>Sketch mode, dimension labels and feature dialogs fixed. Confirmed in a second, independent Linux setup. Updated to the current Alibre release.</li>
         <li><span class="d">Late October 2026</span>Screen-free automation: inspect parts, change dimensions, export to neutral CAD formats. Packaged as a container and deployed as an always-on service.</li>
-        <li class="now"><span class="d">November 25, 2026</span>Desktop app and automation re-verified for this report.</li>
+        <li><span class="d">November 25, 2026</span>Desktop app and automation re-verified for this report.</li>
+        <li><span class="d">November 26, 2026</span>Ran on an Apple Silicon Mac in an Arm Linux virtual machine and passed the automated test kit with no failures. Installed Wine directly in the VM too, with a desktop launcher and file types. First run directly on macOS: install, activation and headless automation work.</li>
+        <li class="now"><span class="d">November 27, 2026</span>Finished the macOS work with McSoda and the research into publishing as Bottles. Tested Python scripting on macOS and found the cause of the blank macOS 3D view.</li>
       </ul>
     </section>
 
@@ -258,19 +286,18 @@ a{color:var(--accent)}
             <li>GPU-rendered 3D view</li>
             <li>Bundled and community add-ons load</li>
             <li>Exports to STEP, IGES, SAT, Parasolid, STL and OBJ from scripts</li>
+            <li>Drawing export to DWG and DXF from scripts (tested on macOS)</li>
+            <li>Changing dimensions and running C# scripts from the command line</li>
+            <li>Building parts and assemblies from Python: sketches, extrudes, revolves, sweeps, lofts, fillets, chamfers, configurations and assembly constraints (tested on macOS)</li>
             <li>Always-on conversion service on a small server</li>
+            <li>Apple Silicon Macs, in an Arm Linux virtual machine, with a desktop launcher and file types (add-ons not yet)</li>
+            <li>Headless automation directly on macOS</li>
           </ul>
         </div>
         <div>
           <h2>Next</h2>
           <ul class="list">
-            <li><span class="pill info">Now</span> Researching publishing as Bottles: one focused on headless and command-line use, one for development and testing</li>
-            <li><span class="pill warn">Next</span> macOS through <a href="https://usebottles.com/">Bottles</a> Next, which now has a macOS runner, <a href="https://github.com/bottlesdevs/wine/releases/tag/mcsoda-11.0-4">McSoda 11.0</a> (<a href="https://usebottles.com/blog/2026-08-15-bottles-next-got-its-first-runner-for-macos.md">announcement</a>)</li>
-            <li>Fix the remaining editing issue that appears after saving</li>
-            <li>Test drawings, printing and PDF output</li>
-            <li>Test add-on commands end to end</li>
-            <li>Try a standard Linux PC with no Windows underneath</li>
-            <li>Build a one-step installer for the Linux side</li>
+            <li>Release a package for development and testing</li>
           </ul>
         </div>
       </div>

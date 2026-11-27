@@ -38,7 +38,14 @@ Development and testing recordings: the [Alibre on Linux playlist](https://www.y
 | Drawings, printing and other workspaces | 20% |
 | Packaging for others | 10% |
 
-Percentages are estimates, not measured test coverage. Last updated November 25, 2026.
+### Apple Silicon Macs
+
+| Setup | Desktop app | Headless automation | State |
+|---|---|---|---|
+| Ubuntu 26.04 Arm VM in Parallels, Rosetta for Linux | works | works | working; test kit passed with no failures |
+| macOS directly (McSoda 11.0 + Apple D3DMetal) | not usable: blank 3D view, slow, some dialogs hang | works, same results as Linux | cause of the blank view found; desktop work on hold |
+
+Percentages are estimates, not measured test coverage. Last updated November 27, 2026.
 
 ## AI attribution
 
