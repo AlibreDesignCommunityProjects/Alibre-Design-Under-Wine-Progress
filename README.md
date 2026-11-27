@@ -45,6 +45,8 @@ Development and testing recordings: the [Alibre on Linux playlist](https://www.y
 | Ubuntu 26.04 Arm VM in Parallels, Rosetta for Linux | works | works | working; test kit passed with no failures |
 | macOS directly (McSoda 11.0 + Apple D3DMetal) | not usable: blank 3D view, slow, some dialogs hang | works, same results as Linux | cause of the blank view found; desktop work on hold |
 
+Screenshots of both Mac setups are on the report page, in the Apple Silicon Macs section.
+
 Percentages are estimates, not measured test coverage. Last updated November 27, 2026.
 
 ## AI attribution
