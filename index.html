@@ -224,8 +224,8 @@ a{color:var(--accent)}
         </div>
         <div>
           <h3>Directly on macOS, no VM <span class="pill warn">Partly working</span></h3>
-          <p>We used McSoda 11.0, the macOS runner from Bottles, with Apple's D3DMetal for 3D graphics. Alibre installs and activates, and command-line automation gives the same results as on Linux. The desktop window opens with a blank 3D view; the interface lags and some dialogs hang.</p>
-          <p class="note">Alibre creates its 3D view at a tiny size and then enlarges it, and the macOS graphics layer never passes the new size on. Our experimental fix makes the model appear, but then Alibre ignores the mouse and keyboard, and we haven't found why yet.</p>
+          <p>We used McSoda 11.0, the macOS Wine build from the Bottles project, run on its own without the Bottles app, with Apple's D3DMetal for 3D graphics. Alibre installs and activates, and command-line automation gives the same results as on Linux. The desktop window opens with a blank 3D view; the interface lags and some dialogs hang.</p>
+          <p class="note">Alibre creates its 3D view at a tiny size and then enlarges it, and the macOS graphics layer never passes the new size on. Our experimental fix makes the model appear, but then Alibre ignores the mouse and keyboard. We've put the macOS desktop work on hold.</p>
         </div>
       </div>
       <div class="gauges">
@@ -271,7 +271,7 @@ a{color:var(--accent)}
         <li><span class="d">Late October 2026</span>Screen-free automation: inspect parts, change dimensions, export to neutral CAD formats. Packaged as a container and deployed as an always-on service.</li>
         <li><span class="d">November 25, 2026</span>Desktop app and automation re-verified for this report.</li>
         <li><span class="d">November 26, 2026</span>Ran on an Apple Silicon Mac in an Arm Linux virtual machine and passed the automated test kit with no failures. Installed Wine directly in the VM too, with a desktop launcher and file types. First run directly on macOS: install, activation and headless automation work.</li>
-        <li class="now"><span class="d">November 27, 2026</span>Tested Python scripting on macOS. Found the cause of the blank macOS 3D view and started on a fix.</li>
+        <li class="now"><span class="d">November 27, 2026</span>Finished the macOS work with McSoda and the research into publishing as Bottles. Tested Python scripting on macOS and found the cause of the blank macOS 3D view.</li>
       </ul>
     </section>
 
@@ -286,19 +286,18 @@ a{color:var(--accent)}
             <li>GPU-rendered 3D view</li>
             <li>Bundled and community add-ons load</li>
             <li>Exports to STEP, IGES, SAT, Parasolid, STL and OBJ from scripts</li>
+            <li>Drawing export to DWG and DXF from scripts (tested on macOS)</li>
+            <li>Changing dimensions and running C# scripts from the command line</li>
+            <li>Building parts and assemblies from Python: sketches, extrudes, revolves, sweeps, lofts, fillets, chamfers, configurations and assembly constraints (tested on macOS)</li>
             <li>Always-on conversion service on a small server</li>
+            <li>Apple Silicon Macs, in an Arm Linux virtual machine, with a desktop launcher and file types (add-ons not yet)</li>
+            <li>Headless automation directly on macOS</li>
           </ul>
         </div>
         <div>
           <h2>Next</h2>
           <ul class="list">
-            <li><span class="pill info">Now</span> macOS through <a href="https://usebottles.com/">Bottles</a> Next's macOS runner, <a href="https://github.com/bottlesdevs/wine/releases/tag/mcsoda-11.0-4">McSoda 11.0</a> (<a href="https://usebottles.com/blog/2026-08-15-bottles-next-got-its-first-runner-for-macos.md">announcement</a>): fix the blank 3D view without freezing input, then report it to the runner's developers</li>
-            <li><span class="pill warn">Next</span> Researching publishing as Bottles: one focused on headless and command-line use, one for development and testing</li>
-            <li>Fix the remaining editing issue that appears after saving</li>
-            <li>Test drawings, printing and PDF output</li>
-            <li>Test add-on commands end to end</li>
-            <li>Try a standard Linux PC with no Windows underneath</li>
-            <li>Build a one-step installer for the Linux side</li>
+            <li>Release a package for development and testing</li>
           </ul>
         </div>
       </div>
